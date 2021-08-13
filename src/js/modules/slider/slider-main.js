@@ -1,8 +1,8 @@
 import Slider from "./slider";
 
 export default class MainSlider extends Slider {
-    constructor(page, btns) {
-        super(page, btns); 
+    constructor(btns) {
+        super(btns); 
     }
 
     showSlides(n) { //Метод показа слайдов
@@ -48,7 +48,7 @@ export default class MainSlider extends Slider {
         this.showSlides(this.slideIndex += n);
     } //функция перелистывания слайдов 
 
-    render() {
+    init() {
         try {
             this.hanson = document.querySelector('.hanson');
         } catch(e){}
