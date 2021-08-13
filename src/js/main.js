@@ -1,8 +1,11 @@
 import VideoPlayer from "./modules/playVideo";
-import Slider from "./modules/slider";
+import MainSlider from './modules/slider/slider-main'
 
 window.addEventListener('DOMContentLoaded', () => {
-    const slider = new Slider('.page', '.next');
+    const slider = new MainSlider({
+        btns: '.next',
+        page: '.page'
+    });
     slider.render();
     // slider.showPageByTime(3, 3000);
     const videoPlayer = new VideoPlayer('.showup .play','.overlay');

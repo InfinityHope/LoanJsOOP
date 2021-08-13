@@ -1,9 +1,8 @@
-export default class Slider {
+import Slider from "./slider";
+
+export default class MainSlider extends Slider {
     constructor(page, btns) {
-        this.page = document.querySelector(page); //страница слайдера
-        this.slides = this.page.children; //слайды 
-        this.btns = document.querySelectorAll(btns); //кнопки переключения
-        this.slideIndex = 1;
+        super(page, btns); 
     }
 
     showSlides(n) { //Метод показа слайдов
@@ -36,15 +35,14 @@ export default class Slider {
         }); //Скрываем все слайды
         this.slides[this.slideIndex - 1].classList.remove('hide');
         this.slides[this.slideIndex - 1].classList.add('animated','show', 'slideInUp');
-         //Показываем первый слайд при рендере страницы
+        //Показываем первый слайд при рендере страницы
+        // showPageByTime (page, time) {
+        //     setInterval(()=> {
+        //         this.slideIndex = page;
+        //         this.showSlides(this.slideIndex);
+        //     }, time);
+        // }
     }
-
-    // showPageByTime (page, time) {
-    //     setInterval(()=> {
-    //         this.slideIndex = page;
-    //         this.showSlides(this.slideIndex);
-    //     }, time);
-    // }
 
     plusSlides (n) {
         this.showSlides(this.slideIndex += n);
