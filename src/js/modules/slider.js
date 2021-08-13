@@ -17,17 +17,25 @@ export default class Slider {
 
         try{
             this.hanson.classList.add('fadeOut');
-            
+            if (n === 3) {
+                setTimeout(()=>{
+                    this.hanson.classList.add('show', 'fadeIn');
+                    this.hanson.classList.remove('hide', 'fadeOut');
+                }, 3000);
+            } else {
+                this.hanson.classList.add('hide', 'fadeOut');
+                this.hanson.classList.remove('show', 'fadeIn');
+            }
         } catch (e) {}
         
 
         this.slides.forEach(slide => {
-            slide.classList.remove('show', 'fadeIn')
-            slide.classList.add('hide', 'fadeOut')
+            slide.classList.remove('animated','show', 'slideInUp')
+            slide.classList.add('hide')
             
         }); //Скрываем все слайды
-        this.slides[this.slideIndex - 1].classList.remove('hide', 'fadeOut');
-        this.slides[this.slideIndex - 1].classList.add('show', 'fadeIn');
+        this.slides[this.slideIndex - 1].classList.remove('hide');
+        this.slides[this.slideIndex - 1].classList.add('animated','show', 'slideInUp');
          //Показываем первый слайд при рендере страницы
     }
 
