@@ -2,6 +2,7 @@ import VideoPlayer from "./modules/playVideo";
 import MainSlider from './modules/slider/slider-main'
 import MiniSlider from './modules/slider/slider-mini'
 import Difference from './modules/difference'
+import Form from "./modules/forms";
 
 window.addEventListener('DOMContentLoaded', () => {
     const mainSlider = new MainSlider({
@@ -42,4 +43,6 @@ window.addEventListener('DOMContentLoaded', () => {
     videoPlayer.init();
 
     new Difference('.officerold', '.officernew', '.officer__card-item').init();
+
+    new Form ('.form', 'assets/question.php').init();
 });
