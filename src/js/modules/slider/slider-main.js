@@ -5,6 +5,28 @@ export default class MainSlider extends Slider {
         super(btns); 
     }
 
+    bindArrows(arrow, n) {
+        this.btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.plusSlides(1); //Обработчик события на кнопки для перелистывания слайдов
+            }); 
+
+            btn.parentNode.previousElementSibling.addEventListener('click', (e) => { //Возвращение к первому слайду по клику на лого
+                e.preventDefault();
+                this.slideIndex = 1;
+                this.showSlides(this.slideIndex);
+            });
+        });
+
+        document.querySelectorAll(arrow).forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                this.plusSlides(n);
+            })
+        })
+    }
+
     showSlides(n) { //Метод показа слайдов
         if (n > this.slides.length) {
             this.slideIndex = 1;
@@ -48,24 +70,16 @@ export default class MainSlider extends Slider {
         this.showSlides(this.slideIndex += n);
     } //функция перелистывания слайдов 
 
+
     init() {
-        try {
-            this.hanson = document.querySelector('.hanson');
-        } catch(e){}
+        if(this.container) {
+            try {
+                this.hanson = document.querySelector('.hanson');
+            } catch(e){}
 
-
-        this.btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                this.plusSlides(1); //Обработчик события на кнопки для перелистывания слайдов
-            }); 
-
-            btn.parentNode.previousElementSibling.addEventListener('click', (e) => { //Возвращение к первому слайду по клику на лого
-                e.preventDefault();
-                this.slideIndex = 1;
-                this.showSlides(this.slideIndex);
-            });
-        });
-
-        this.showSlides(this.slideIndex);
+            this.showSlides(this.slideIndex);
+            this.bindArrows('.prevmodule', -1);
+            this.bindArrows('.nextmodule', 1);
+        }
     }
 }

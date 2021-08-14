@@ -12,6 +12,12 @@ window.addEventListener('DOMContentLoaded', () => {
     mainSlider.init();
     // slider.showPageByTime(3, 3000);
 
+    const moduleSlider = new MainSlider({
+        container: '.moduleapp',
+        btns: '.next',
+    });
+    moduleSlider.init();
+
     const showUpSlider = new MiniSlider({
         container: '.showup__content-slider',
         prev: '.showup__prev',
