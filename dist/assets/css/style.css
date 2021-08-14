@@ -2105,6 +2105,6 @@ a:active {
     animation: fadeOut ease-out .7s;
 }
 
-.flex {
+.flex { 
     display: flex;
 }
