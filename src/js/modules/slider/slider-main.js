@@ -5,7 +5,7 @@ export default class MainSlider extends Slider {
         super(btns); 
     }
 
-    bindArrows(arrow, n) {
+    bindArrows() {
         this.btns.forEach(btn => {
             btn.addEventListener('click', () => {
                 this.plusSlides(1); //Обработчик события на кнопки для перелистывания слайдов
@@ -18,11 +18,19 @@ export default class MainSlider extends Slider {
             });
         });
 
-        document.querySelectorAll(arrow).forEach(item => {
+        document.querySelectorAll('.prevmodule').forEach(item => {
             item.addEventListener('click', (e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                this.plusSlides(n);
+                this.plusSlides(-1);
+            })
+        })
+
+        document.querySelectorAll('.nextmodule').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                this.plusSlides(1);
             })
         })
     }
@@ -78,8 +86,7 @@ export default class MainSlider extends Slider {
             } catch(e){}
 
             this.showSlides(this.slideIndex);
-            this.bindArrows('.prevmodule', -1);
-            this.bindArrows('.nextmodule', 1);
+            this.bindArrows();
         }
     }
 }
